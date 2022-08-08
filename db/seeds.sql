@@ -24,4 +24,4 @@ VALUES  (0, "Qwe", "Wer", 0, NULL),
         (6, "DFG", "FGH", 5, 1),
         (7, "GHJ", "HJK", 5, 2),
         (8, "JKL", "KLZ", 6, 2),
-        (9, "LZX", "ZXC", 7, 2),
+        (9, "LZX", "ZXC", 7, 2);
