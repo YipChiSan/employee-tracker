@@ -1,5 +1,5 @@
 function getAllEmployees() {
-    db.query(`SELECT * FROM employee`, (err, results) => {
+    db.query(`SELECT id, first_name, last_name FROM employee`, (err, results) => {
         if (err) {
             console.log(err);
         }
