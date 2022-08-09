@@ -20,3 +20,5 @@ const rootQuestion = [
         name: "basicAction",
     }
 ];
+
+module.exports = {rootQuestion};
