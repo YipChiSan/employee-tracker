@@ -92,3 +92,5 @@ function getSalariesBydept(dept_id) {
         }
     );
 }
+
+module.exports = {getAllEmployees, addEmployee, updateEmployeeRole, updateEmployeeManager, getEmployeesByManager, getEmployeesByDept, deleteEmployee, getSalariesBydept};
