@@ -76,21 +76,4 @@ function deleteEmployee(employee_id) {
     });
 }
 
-function getSalariesBydept(dept_id) {
-    db.query(`SELECT SUM(role_table.salary) as total_salary, department.name as department_name
-                FROM employee 
-                INNER JOIN role_table 
-                ON employee.role_id = role_table.id 
-                INNER JOIN department
-                ON role_table.department_id = department.id
-                GROUP BY department_name
-                HAVING department.id = ?`, [dept_id], (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        console.log(result);
-        }
-    );
-}
-
-module.exports = {getAllEmployees, addEmployee, updateEmployeeRole, updateEmployeeManager, getEmployeesByManager, getEmployeesByDept, deleteEmployee, getSalariesBydept};
+module.exports = {getAllEmployees, addEmployee, updateEmployeeRole, updateEmployeeManager, getEmployeesByManager, getEmployeesByDept, deleteEmployee};
