@@ -5,8 +5,9 @@ function getAllDepartments() {
     db.query(`SELECT * FROM department`, (err, results) => {
         if (err) {
             console.log(err);
+        } else {
+            return results;
         }
-        console.log(results);
     });
 }
 
@@ -14,8 +15,9 @@ function addDepartment(name) {
     db.query(`INSERT INTO department (name) VALUES  (?),`, [name], (err, result) => {
     if (err) {
         console.log(err);
+    } else {
+        return result;
     }
-    console.log(result);
     }
 )}
 
@@ -23,8 +25,9 @@ function deleteDept(dept_id) {
     db.query(`DELETE FROM department where id = ?,`, [dept_id], (err, result) => {
     if (err) {
         console.log(err);
+    } else {
+        return result;
     }
-    console.log(result);
     }
 )
 }
@@ -40,8 +43,9 @@ function getSalariesBydept(dept_id) {
                 HAVING department.id = ?`, [dept_id], (err, result) => {
         if (err) {
             console.log(err);
+        } else {
+            return result;
         }
-        console.log(result);
         }
     );
 }
