@@ -6,7 +6,7 @@ const rootQuestion = [
                     "Add employees", 
                     "Update employee's role", 
                     "Update employee's manager", 
-                    "View employee's by manager",
+                    "View employees by manager",
                     "View employees by department",
                     "Delete employee",
                     "View all departments",
