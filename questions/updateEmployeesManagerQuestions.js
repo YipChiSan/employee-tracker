@@ -6,6 +6,12 @@ managerList = managerList.map((value) => value.id + ". " + value.first_name + " 
 const updateEmployeesManagerQuestions = [
     {
         type:'list',
+        message: "Which employee's manager do you want to update?",
+        choices: managerList,
+        name: 'employee',
+    },
+    {
+        type:'list',
         message: "What is the manager of the employee?",
         choices: managerList,
         name: 'manager',
