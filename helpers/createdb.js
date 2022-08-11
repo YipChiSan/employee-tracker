@@ -8,4 +8,4 @@ const db = mysql.createConnection({
     password: 'newpassword'
 });
 
-module.exports = db;
+module.exports = db.promise();
