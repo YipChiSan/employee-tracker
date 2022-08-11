@@ -9,6 +9,7 @@
   "author": "Zixin Ye",
   "license": "ISC",
   "dependencies": {
+    "console.table": "^0.10.0",
     "mysql2": "^2.3.3"
   }
 }
