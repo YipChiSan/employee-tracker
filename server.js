@@ -1,19 +1,57 @@
 const cTable = require('console.table');
-const createddb = require('./helpers/createdb');
-const deptUtils = require('./helpers/deptUtils');
-const employeeUtils = require('./helpers/employeeUtils');
 const getIDFromCombinedData = require('./helpers/getIDFromCombinedData');
-const rolesUtils = require('./helpers/rolesUtils');
-const addDeptQuestions = require('./questions/addDeptQuestions');
-const addEmployeesQuestions = require('./questions/addEmployeesQuestions');
-const addRoleQuestions = require('./questions/addRoleQuestions');
-const deleteDeptQuestions = require('./questions/deleteDeptQuestions');
-const deleteEmployeeQuestions = require('./questions/deleteEmployeeQuestions');
-const deleteRoleQuestions = require('./questions/deleteRoleQuestions');
+const inquirer = require('inquirer');
 const rootQuestions = require('./questions/rootQuestions');
-const updateEmployeeManagerQuestions = require('./questions/updateEmployeesManagerQuestions');
-const updateEmployeesRoleQuestions = require('./questions/updateEmployeesRoleQuestions');
-const viewEmployeesByDeptQuestions = require('./questions/viewEmployeesByDeptQuestions');
-const viewEmployeesByManagerQuestions = require('./questions/viewEmployeesByManagerQuestions');
-const viewTotalSalaryQuestions = require('./questions/viewTotalSalaryQuestions');
-const fs = require('fs');
+const questionsDictFunc = require('./questions/questionsDict');
+const utilsDict = require('./helpers/utilsDict');
+
+let questionsDict = questionsDictFunc();
+let continueQuestion = [{
+    type: 'confirm',
+    message: 'Do you want to continue',
+    name: "isContinued",
+}];
+let question;
+function getInput(questions) {
+    return inquirer.prompt(questions)
+            .then((answers) => {
+                if (answers.hasOwnProperty("isContinued")) {
+                    if (answers["isContinued"]) {
+                        return getInput(rootQuestions);
+                    } else {
+                        console.log("Bye");
+                        return;
+                    }
+                }
+
+                if (answers["basicAction"]) {
+                    question = answers["basicAction"];
+                    if (question === "Quit") {
+                        console.log("Bye");
+                        return;
+                    }
+                    if (questionsDict.has(answers["basicAction"])) {
+                        return getInput(questionsDict.get(question));
+                    } else {
+                        // View all query
+                        let queryFunc = utilsDict.get(question);
+                        let queryRes = queryFunc();
+                        let table = cTable.getTable(queryRes);
+                        console.log(table);
+                        return getInput(continueQuestion);
+                    }
+                } else {
+                    let values = [];
+                    for (let key in answers) {
+                        values.push(answers[key]);
+                    }
+                    let queryFunc = utilsDict.get(question);
+                    let queryRes = queryFunc(...values);
+                    let table = cTable.getTable(queryRes);
+                    console.log(table);
+                    return getInput(continueQuestion);
+                }
+            })
+}
+
+getInput(rootQuestions);
