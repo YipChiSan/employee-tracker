@@ -13,8 +13,8 @@ utilsDict.set("View all departments", deptUtils.getAllDepartments);
 utilsDict.set("Add department", deptUtils.addDepartment);
 utilsDict.set("Delete department", deptUtils.deleteDept);
 utilsDict.set("View summed salaries of all employees in a department", deptUtils.getSalariesBydept);
-utilsDict.set("View all roles", getAllRoles);
-utilsDict.set("Add role", addRoles);
-utilsDict.set("Delete role", deleteRoles);
+utilsDict.set("View all roles", rolesUtils.getAllRoles);
+utilsDict.set("Add role", rolesUtils.addRoles);
+utilsDict.set("Delete role", rolesUtils.deleteRoles);
 
 module.exports = utilsDict;
