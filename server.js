@@ -1,5 +1,4 @@
 const cTable = require('console.table');
-const getIDFromCombinedData = require('./helpers/getIDFromCombinedData');
 const inquirer = require('inquirer');
 const rootQuestions = require('./questions/rootQuestions');
 const questionsDictFunc = require('./questions/questionsDict');
