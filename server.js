@@ -16,3 +16,4 @@ const updateEmployeesRoleQuestions = require('./questions/updateEmployeesRoleQue
 const viewEmployeesByDeptQuestions = require('./questions/viewEmployeesByDeptQuestions');
 const viewEmployeesByManagerQuestions = require('./questions/viewEmployeesByManagerQuestions');
 const viewTotalSalaryQuestions = require('./questions/viewTotalSalaryQuestions');
+const fs = require('fs');
