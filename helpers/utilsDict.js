@@ -1,0 +1,20 @@
+const deptUtils = require('./helpers/deptUtils');
+const employeeUtils = require('./helpers/employeeUtils');
+const rolesUtils = require('./helpers/rolesUtils');
+const utilsDict = new Map();
+utilsDict.set("View all employees", employeeUtils.getAllEmployees);
+utilsDict.set("Add employees", employeeUtils.addEmployee);
+utilsDict.set("Update employee's role", employeeUtils.updateEmployeeRole);
+utilsDict.set("Update employee's manager", employeeUtils.updateEmployeeManager);
+utilsDict.set("View all employees of a manager", employeeUtils.getEmployeesByManager);
+utilsDict.set("View all employees of a department", employeeUtils.getEmployeesByDept);
+utilsDict.set("Delete employee", employeeUtils.deleteEmployee);
+utilsDict.set("View all departments", deptUtils.getAllDepartments);
+utilsDict.set("Add department", deptUtils.addDepartment);
+utilsDict.set("Delete department", deptUtils.deleteDept);
+utilsDict.set("View summed salaries of all employees in a department", deptUtils.getSalariesBydept);
+utilsDict.set("View all roles", getAllRoles);
+utilsDict.set("Add role", addRoles);
+utilsDict.set("Delete role", deleteRoles);
+
+module.exports = utilsDict;
