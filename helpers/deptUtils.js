@@ -1,4 +1,5 @@
 const db = require('./createdb');
+const getIDFromCombinedData = require('./getIDFromCombinedData');
 
 
 function getAllDepartments() {
@@ -22,6 +23,7 @@ function addDepartment(name) {
 )}
 
 function deleteDept(dept_id) {
+    dept_id = getIDFromCombinedData(dept_id);
     db.query(`DELETE FROM department where id = ?,`, [dept_id], (err, result) => {
     if (err) {
         console.log(err);
@@ -33,6 +35,7 @@ function deleteDept(dept_id) {
 }
 
 function getSalariesBydept(dept_id) {
+    dept_id = getIDFromCombinedData(dept_id);
     db.query(`SELECT SUM(role_table.salary) as total_salary, department.name as department_name
                 FROM employee 
                 INNER JOIN role_table 
