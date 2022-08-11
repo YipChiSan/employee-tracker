@@ -1,14 +1,14 @@
-const addDeptQuestions = require('./questions/addDeptQuestions');
-const addEmployeesQuestions = require('./questions/addEmployeesQuestions');
-const addRoleQuestions = require('./questions/addRoleQuestions');
-const deleteDeptQuestions = require('./questions/deleteDeptQuestions');
-const deleteEmployeeQuestions = require('./questions/deleteEmployeeQuestions');
-const deleteRoleQuestions = require('./questions/deleteRoleQuestions');
-const updateEmployeeManagerQuestions = require('./questions/updateEmployeesManagerQuestions');
-const updateEmployeesRoleQuestions = require('./questions/updateEmployeesRoleQuestions');
-const viewEmployeesByDeptQuestions = require('./questions/viewEmployeesByDeptQuestions');
-const viewEmployeesByManagerQuestions = require('./questions/viewEmployeesByManagerQuestions');
-const viewTotalSalaryQuestions = require('./questions/viewTotalSalaryQuestions');
+const addDeptQuestions = require('./addDeptQuestions');
+const addEmployeesQuestions = require('./addEmployeesQuestions');
+const addRoleQuestions = require('./addRoleQuestions');
+const deleteDeptQuestions = require('./deleteDeptQuestions');
+const deleteEmployeeQuestions = require('./deleteEmployeeQuestions');
+const deleteRoleQuestions = require('./deleteRoleQuestions');
+const updateEmployeeManagerQuestions = require('./updateEmployeesManagerQuestions');
+const updateEmployeesRoleQuestions = require('./updateEmployeesRoleQuestions');
+const viewEmployeesByDeptQuestions = require('./viewEmployeesByDeptQuestions');
+const viewEmployeesByManagerQuestions = require('./viewEmployeesByManagerQuestions');
+const viewTotalSalaryQuestions = require('./viewTotalSalaryQuestions');
 const questionsDict = new Map();
 
 function initialiseQuestionsDict () {

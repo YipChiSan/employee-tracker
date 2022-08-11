@@ -1,6 +1,6 @@
-const deptUtils = require('./helpers/deptUtils');
-const employeeUtils = require('./helpers/employeeUtils');
-const rolesUtils = require('./helpers/rolesUtils');
+const deptUtils = require('./deptUtils');
+const employeeUtils = require('./employeeUtils');
+const rolesUtils = require('./rolesUtils');
 const utilsDict = new Map();
 utilsDict.set("View all employees", employeeUtils.getAllEmployees);
 utilsDict.set("Add employees", employeeUtils.addEmployee);
