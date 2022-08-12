@@ -36,7 +36,7 @@ const rootQuestions = [
 
 let question;
 function getInput(questions) {
-  
+    let table;
     return Promise.all([employeeUtils.getAllEmployees(), deptUtils.getAllDepartments(), rolesUtils.getAllRoles()])
             .then((values) => {
                 const [[employeeRows], [deptRows], [roleRows]] = values;
@@ -50,6 +50,7 @@ function getInput(questions) {
                             return getInput(rootQuestions);
                         } else {
                             console.log("Bye");
+                            db.end();
                             return;
                         }
                         }
@@ -59,7 +60,7 @@ function getInput(questions) {
                             switch (question) {
                                 case "View all employees":
                                     
-                                    let table = cTable.getTable(employeeList);
+                                    table = cTable.getTable(employeeList);
                                     console.log(table);
                                     return getInput(continueQuestion);
                             
@@ -111,13 +112,13 @@ function getInput(questions) {
                                             {
                                                 type:'list',
                                                 message: "Which employee's manager do you want to update?",
-                                                choices: managerList,
+                                                choices: employeeList,
                                                 name: 'employee',
                                             },
                                             {
                                                 type:'list',
                                                 message: "What is the manager of the employee?",
-                                                choices: managerList,
+                                                choices: employeeList,
                                                 name: 'manager',
                                             }
                                         ]
@@ -129,7 +130,7 @@ function getInput(questions) {
                                             {
                                                 type:'list',
                                                 message: "Which manager are you going to view?",
-                                                choices: managerList,
+                                                choices: employeeList,
                                                 name: 'manager',
                                             }
                                         ]
@@ -237,7 +238,7 @@ function getInput(questions) {
                                 default:
                                     console.log("Bye");
                                     db.end();
-                                    return;
+                                    return ;
 
                             };
                     
@@ -260,8 +261,12 @@ function getInput(questions) {
 
 
 
-    getInput(rootQuestions);
 
+
+
+     getInput(rootQuestions);
+    
+    
 
 
 

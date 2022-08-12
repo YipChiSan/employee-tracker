@@ -7,12 +7,12 @@ function getAllDepartments() {
 }
 
 function addDepartment(name) {
-    return db.query(`INSERT INTO department (name) VALUES  (?),`, [name]);
+    return db.query(`INSERT INTO department (name) VALUES  (?)`, [name]);
 }
 
 function deleteDept(dept_id) {
     dept_id = getIDFromCombinedData(dept_id);
-    return db.query(`DELETE FROM department where id = ?,`, [dept_id]);
+    return db.query(`DELETE FROM department where id = ?`, [dept_id]);
 
 }
 

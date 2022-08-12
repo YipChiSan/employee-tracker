@@ -8,19 +8,19 @@ function getAllEmployees() {
 function addEmployee(first_name, last_name, role_id, manager_id) {
     role_id = getIDFromCombinedData(role_id);
     manager_id = getIDFromCombinedData(manager_id);
-    return db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES  (?, ?, ?, ?),`);
+    return db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES  (?, ?, ?, ?)`, [first_name, last_name,role_id, manager_id]);
 }
 
 function updateEmployeeRole(employee_id, role_id) {
     employee_id = getIDFromCombinedData(employee_id);
     role_id = getIDFromCombinedData(role_id);
-    return db.query(`UPDATE employee SET role_id = ? WHERE employee_id = ?;`, [role_id, employee_id]);
+    return db.query('UPDATE employee SET role_id = ? WHERE employee.id = ?;', [role_id, employee_id]);
 }
 
 function updateEmployeeManager(employee_id, manager_id) {
     employee_id = getIDFromCombinedData(employee_id);
     manager_id = getIDFromCombinedData(manager_id);
-    return db.query(`UPDATE employee SET manager_id = ? WHERE employee_id = ?;`, [manager_id, employee_id]);
+    return db.query('UPDATE employee SET manager_id = ? WHERE employee.id = ?;', [manager_id, employee_id]);
 }
 
 function getEmployeesByManager(manager_id) {
