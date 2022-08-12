@@ -1,7 +1,8 @@
 const employeeUtils = require('../helpers/employeeUtils');
 let managerList;
-managerList = employeeUtils.getAllEmployees();
-managerList = managerList.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
+let db = require('../helpers/createdb');
+employeeUtils.getAllEmployees().then(([rows]) => {
+managerList = rows.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
 
 const updateEmployeesManagerQuestions = [
     {
@@ -19,3 +20,4 @@ const updateEmployeesManagerQuestions = [
 ];
 
 module.exports = updateEmployeesManagerQuestions;
+}).then(() => db.end());

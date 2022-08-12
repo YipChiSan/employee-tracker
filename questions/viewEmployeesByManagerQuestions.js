@@ -1,7 +1,8 @@
 const employeeUtils = require('../helpers/employeeUtils');
 let managerList;
-managerList = employeeUtils.getAllEmployees();
-managerList = managerList.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
+let db = require('../helpers/createdb');
+employeeUtils.getAllEmployees().then(([rows]) => {
+managerList = rows.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
 
 const viewEmployeeByManagerQuestions = [
     {
@@ -13,3 +14,4 @@ const viewEmployeeByManagerQuestions = [
 ];
 
 module.exports = viewEmployeeByManagerQuestions;
+}).then(() => db.end());

@@ -1,14 +1,16 @@
 const roles = require('../helpers/rolesUtils');
 let roleList;
-roleList = roles.getAllRoles();
-roleList = roleList.map((value) => value.id + ". " + value.title);
 
 const employeeUtils = require('../helpers/employeeUtils');
 let employeeList;
 employeeList = employeeUtils.getAllEmployees();
-employeeList = employeeList.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
+let db = require('../helpers/createdb');
+Promise.all([roles.getAllRoles(), employeeUtils.getAllEmployees()]).then((values) => {
+    [[roleRows], [employeeRows]] = values;
+    roleList = roleRows.map((value) => value.id + ". " + value.title);
+    employeeList = employeeRows.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
 
-const updateEmployeesRoleQuestions = [
+    const updateEmployeesRoleQuestions = [
         {
             type:'list',
             message: "Which employee's role do you want to update?",
@@ -24,3 +26,4 @@ const updateEmployeesRoleQuestions = [
 ];
 
 module.exports = updateEmployeesRoleQuestions;
+}).then(() => db.end());

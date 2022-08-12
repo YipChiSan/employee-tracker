@@ -1,6 +1,8 @@
 const deptUtils = require('../helpers/deptUtils');
-let deptList = deptUtils.getAllDepartments();
-deptList = deptList.map((value) => value.id + ". " + value.name);
+let deptList;
+let db = require('../helpers/createdb');
+ deptUtils.getAllDepartments().then(([rows]) => {
+deptList = rows.map((value) => value.id + ". " + value.name);
 
 const viewTotalSalaryQuestions = [
     {
@@ -12,3 +14,4 @@ const viewTotalSalaryQuestions = [
 ];
 
 module.exports = viewTotalSalaryQuestions;
+ }).then(() => db.end());
