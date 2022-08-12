@@ -1,13 +1,14 @@
 const roles = require('../helpers/rolesUtils');
 const employeeUtils = require('../helpers/employeeUtils');
-
+let db = require('../helpers/createdb');
 let roleList;
 let managerList;
 
 Promise.all([roles.getAllRoles(), employeeUtils.getAllEmployees()])
             .then((values) => {
-                roleList = values[0].map((value) => value.id + ". " + value.title);
-                managerList = values[1].map((value) => value.id + ". " + value.first_name + " " + value.last_name);
+                [[roleRows], [employeeRows]] = values;
+                roleList = roleRows.map((value) => value.id + ". " + value.title);
+                managerList = employeeRows.map((value) => value.id + ". " + value.first_name + " " + value.last_name);
                 const addEmployeeQuestions = [
                     {
                         type: 'input',
@@ -34,4 +35,4 @@ Promise.all([roles.getAllRoles(), employeeUtils.getAllEmployees()])
                 ];
 
                 module.exports = addEmployeeQuestions;
-            });
+            }).then(() => db.end());

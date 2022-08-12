@@ -30,5 +30,5 @@ function getSalariesBydept(dept_id) {
 `, [dept_id]);
 }
 
-getSalariesBydept("1.aaa").then( ([rows]) => { console.log(rows)} ).then(() => db.end());
+//getSalariesBydept("1.aaa").then( ([rows]) => { console.log(rows)} ).then(() => db.end());
 module.exports = {getAllDepartments, addDepartment, deleteDept, getSalariesBydept};
