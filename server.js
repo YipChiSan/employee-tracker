@@ -253,8 +253,13 @@ function getInput(questions) {
                                 if (rows.serverStatus == 2) {
                                     console.log("Success!");
                                 } else {
-                                let table = cTable.getTable(rows);
-                                console.log(table);
+                                    if (Object.keys(rows).length === 0) {
+                                        console.log("No result!");
+                                    } else {
+                                        let table = cTable.getTable(rows);
+                                        console.log(table);
+                                    }
+
                                 }
 
                                 return getInput(continueQuestion);
