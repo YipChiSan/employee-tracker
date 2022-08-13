@@ -249,8 +249,14 @@ function getInput(questions) {
                             }
                             let queryFunc = utilsDict.get(question);
                             queryFunc(...values).then(([rows]) => {
+                                
+                                if (rows.serverStatus == 2) {
+                                    console.log("Success!");
+                                } else {
                                 let table = cTable.getTable(rows);
                                 console.log(table);
+                                }
+
                                 return getInput(continueQuestion);
                             });
 
