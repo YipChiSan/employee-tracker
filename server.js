@@ -60,7 +60,7 @@ function getInput(questions) {
                             switch (question) {
                                 case "View all employees":
                                     
-                                    table = cTable.getTable(employeeList);
+                                    table = cTable.getTable(employeeRows);
                                     console.log(table);
                                     return getInput(continueQuestion);
                             
@@ -159,7 +159,7 @@ function getInput(questions) {
                                     ]);
 
                                 case "View all departments":
-                                    table = cTable.getTable(deptList);
+                                    table = cTable.getTable(deptRows);
                                     console.log(table);
                                     return getInput(continueQuestion);
 
@@ -197,7 +197,7 @@ function getInput(questions) {
                                     );
 
                                 case "View all roles":
-                                    table = cTable.getTable(roleList);
+                                    table = cTable.getTable(roleRows);
                                     console.log(table);
                                     return getInput(continueQuestion);
 

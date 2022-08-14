@@ -2,7 +2,10 @@ const db = require('./createdb');
 const getIDFromCombinedData = require('./getIDFromCombinedData');
 
 function getAllRoles() {
-    return db.query(`SELECT * FROM role_table`);
+    return db.query(`SELECT role_table.id as id, role_table.title as title, role_table.salary as salary, department.name as department_name
+                    From role_table
+                    LEFT JOIN department
+                    ON role_table.department_id = department.id`);
 }
 
 function addRoles(title, salary, department_id) {
