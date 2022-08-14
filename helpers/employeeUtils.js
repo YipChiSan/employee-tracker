@@ -2,7 +2,7 @@ const getIDFromCombinedData = require('./getIDFromCombinedData');
 const db = require('./createdb');
 
 function getAllEmployees() {
-    return db.query(`SELECT e1.id as id, e1.first_name as first_name, e1.last_name as last_name, CONCAT(e2.first_name + e2.last_name) as manager_name, role_table.title as title, department.name as department_name
+    return db.query(`SELECT e1.id as id, e1.first_name as first_name, e1.last_name as last_name, CONCAT(e2.first_name, " ", e2.last_name) as manager_name, role_table.title as title, department.name as department_name
                         FROM employee e1
                         LEFT JOIN role_table
                         ON e1.role_id = role_table.id
